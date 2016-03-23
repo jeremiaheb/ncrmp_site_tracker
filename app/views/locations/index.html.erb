@@ -1,0 +1,51 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="floatingMap">
+        <h3 class="head1">Map</h3>
+        <div id="map_canvas2" style='width: 100%; height: 600px;'></div>
+        <script>
+          var map;
+          var bounds = new google.maps.LatLngBounds();
+          var mapOptions = {
+            mapTypeId: 'roadmap'
+          };
+
+          // Display a map on the page
+          map = new google.maps.Map(document.getElementById("map_canvas2"), mapOptions);
+
+          // Multiple Markers
+          var markers = [
+          ['FLKEYS', 25.7573, -80.1235, '/Florida_Keys'],
+          ['DRTO', 24.61954, -82.86407, '/DRTO'],
+          ['SEFCRI', 27.184656, -80.042454, '/SEFCRI'],
+          ['Puerto Rico', 18.51447, -66.50011, '/Puerto_Rico' ],
+          ['St Thomas/John', 18.23378, -65.10017, '/STT_STJ' ],
+          ['St Croix', 17.7823, -64.5955, '/STX' ]
+          ];
+
+          // Loop through our array of markers & place each one on the map  
+          for( i = 0; i < markers.length; i++ ) {
+            var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+              position: position,
+              map: map
+            });
+
+            marker.setTitle(markers[i][0]);
+            attachMarkerUrl(marker,i);
+
+            // Automatically center the map fitting all markers on the screen
+            map.fitBounds(bounds);
+          }
+          function attachMarkerUrl(marker,num){
+            google.maps.event.addListener(marker, 'click', function(){
+              window.location = markers[num][3]
+            });
+          }
+        </script>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,135 @@
+
+<script>
+  var primaryLocations = <%= raw @primaryJson.to_json %>
+  var alternateLocations = <%= raw @alternateJson.to_json %>
+</script>
+
+<div class="row">
+  <div class="col-md-10">
+    <div id="floatingMap">
+      <div id="map_canvas" style='width: 100%; height: 500px;'></div>
+      <%= button_tag "Toggle Alternates", { :class => "btn", :id => "toggleMarkers" } %>
+      <%= button_tag "Fish Sites Available", { id: "showFishSites", class: "btn", data: { toggle: "modal", target: "#fishModal" }} %>
+      <%= button_tag "Demo Sites Available", { id: "showDemoSites", class: "btn", data: { toggle: "modal", target: "#demoModal" }} %>
+      <%= button_tag "Toggle Habitat Map", { :class => "btn", :id => "toggleHabitatMap" } %>
+
+<!-- Fish Modal -->
+<div class="modal fade" id="fishModal" tabindex="-1" role="dialog" aria-labelledby="fishModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="fishModalLabel">Fish Sites Available</h4>
+      </div>
+      <div class="modal-body demo-modal">
+        <table class="table modalTable" id="fishModalTable">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- Demo Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="demoModalLabel">Demo Sites Available</h4>
+      </div>
+      <div class="modal-body demo-modal">
+        <table class="table modalTable" id="demoModalTable">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
+    
+    
+    </div>
+  </div>
+  <div class="col-md-2 sideBar">
+     <table class="legend" border="0">
+  <tr>
+    <th>Icon</th>
+    <th>Status</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td><img src="/assets/mm_20_white.png" /></td>
+    <td>Not Complete (F_L)</td>
+    <td id="FishOnlyNotComplete">  </td>
+  </tr>
+   <tr>
+    <td><img src="/assets/mm_20_green.png" /></td>
+    <td>Complete (F_L)</td>
+    <td id="FishOnlyComplete">  </td>
+  </tr>
+  <tr>
+    <td><img src="/assets/WhiteTriangle.png" /></td>
+    <td>Not Complete (F_L_D)</td>
+    <td id="AllThreeNotComplete">  </td>
+  </tr>
+  <tr>
+    <td><img src="/assets/GreenTriangles.png" /></td>
+    <td>All Complete (F_L_D)</td>
+    <td id="AllThreeComplete">  </td>
+  </tr>
+  <tr>
+    <td><img src="/assets/YellowTriangle.png" /></td>
+    <td>Fish and LPI Complete (F_L_D)</td>
+    <td id="AllThreeFishComplete">  </td>
+  </tr>
+  <tr>
+    <td><img src="/assets/OrangeTriangle.png" /></td>
+    <td>Demo Complete (F_L_D)</td>
+    <td id="AllThreeDemoComplete">  </td>
+  </tr>
+  <tr>
+    <td><img src="/assets/Cross.png" /></td>
+    <td>No Habitat Found</td>
+    <td id="NoHabitat">  </td>
+  </tr>
+  <tr>
+    <td><img src="/assets/mm_20_black.png" /></td>
+    <td>Alternate</td>
+  </tr>
+</table>
+  </div>
+</div>
+
+<br></br>
+<%= button_tag "Refresh Map", { :class => "btn btn-primary btn-block", :id => "refreshMap" } %>
+<br></br>
+<div class='row infoTable'>
+  <div class="col-md-12">
+    <%= render 'siteTable' %>
+  </div>
+</div>
+
+<div>
+  <p></p>
+</div>

@@ -4,11 +4,28 @@
   <title>NcrmpSiteTracker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= google_maps_api %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <header class="">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <%= render 'layouts/navigation' %>
+        </div>
+      </nav>
+    </header>
+    <div id="main" role="main">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+  </body>
 
-<%= yield %>
-
-</body>
 </html>

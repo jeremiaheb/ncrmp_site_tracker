@@ -1,0 +1,36 @@
+<div class="fixed-table">
+<div class="table-content">
+  <table class ="dataTable" id="dataTable">
+
+    <thead class="header">
+    <tr>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Fish Complete Date</th>
+      <th>Fish Complete Agency</th>
+      <th>Demo Complete Date</th>
+      <th>Demo Complete Agency</th>
+      <th>Status</th>
+      <th>is this Reserved</th>
+    </tr>
+    </thead>
+
+    <% @locations.each do |location| %>
+      <tr class="rowElement <%= location.is_reserved %>">
+      <td class="name"><%= link_to location.site, edit_location_path(location) %></td>
+      <td class="lat"><%= location.latitude %></td>
+      <td class="lon"><%= location.longitude %></td>
+      <td><%= best_in_place location, :fish_complete_date, :as => :date, :place_holder => "---------", :html_attrs => {:class => "datepicker"} %></td>
+      <td><%= best_in_place location, :fish_complete_agency, :as => :input, :place_holder => "---------" %></td>
+      <td><%= best_in_place location, :demo_complete_date, :as => :date, :place_holder => "---------", :html_attrs => {:class => "datepicker"} %></td>
+      <td><%= best_in_place location, :demo_complete_agency, :as => :input, :place_holder => "---------" %></td>
+      <td><%= best_in_place location, :color, :as => :select, :collection => [[1,"not started"], [2,"all complete"], [3,"fish complete"], [4,"demo complete"]] %></td>
+      <td><%= best_in_place location, :is_reserved, as: :checkbox, collection: ["No", "Yes"], class:"isreserved" %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+
+

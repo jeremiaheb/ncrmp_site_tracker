@@ -1,0 +1,65 @@
+<%= form_for @location, :html => { :class => "form-horizontal"}  do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Site</label>
+    <div class="col-sm-5">
+      <input class="form-control" <%= f.text_field :site %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Latitude</label>
+    <div class="col-sm-5">
+      <input class="form-control"  <%= f.text_field :latitude %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Longitude</label>
+    <div class="col-sm-5">
+      <input class="form-control"  <%= f.text_field :longitude %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Level</label>
+    <div class="col-sm-5">
+      <select class="form-control"  <%= f.select :level, [["Primary",1], ["Alternate",2], ["No Habitat",3]] %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Sample Types Needed</label>
+      <div class="col-sm-5">
+        <select class="form-control"  <%= f.select :need, [["Fish",1], ["Fish and Demo",2]] %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Completion Status</label>
+        <div class="col-sm-5">
+          <select class="form-control"  <%= f.select :color, [["Nothing Complete",1], ["All Complete",2],["Fish Only Complete",3], ["Demo Only Complete",4]] %>
+          </div>
+        </div>
+
+        <div class="col-sm-offset-2">
+          <div class="checkbox">
+            <label> Is Reserved? </label> 
+              <input type="checkbox"> <%= f.check_box :is_reserved %>
+          </div>
+        </div>
+
+      
+      <div class="form-group">
+        <div class="col-sm-offset-6">
+          <%= f.submit %>
+        </div>
+      </div>
+
+<% end %>
