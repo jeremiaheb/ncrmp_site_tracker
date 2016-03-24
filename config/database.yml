@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ncrmp_site_tracker_production
-  username: ncrmp_site_tracker
+  username: jeremiaheb
   password: <%= ENV['NCRMP_SITE_TRACKER_DATABASE_PASSWORD'] %>
