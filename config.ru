@@ -3,6 +3,6 @@
 require ::File.expand_path('../config/environment', __FILE__)
 
 
-map NcrmpSiteTracker:Application.config.relative_url_root || "/" do
+map NcrmpSiteTracker::Application.config.relative_url_root || "/" do
   run Rails.application
 end
