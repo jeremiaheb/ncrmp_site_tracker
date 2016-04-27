@@ -80,31 +80,31 @@ $(document).ready(function(){
 
   function getMarkerPath(iconLevel, iconCode) {
     if (iconLevel == 2) { 
-      return "/assets/mm_20_black.png";
+      return "<%= asset_path("mm_20_black.png") %>";
      }
     else if ( iconLevel == 3 ) {
-      return "/assets/Cross.png";
+      return "<%= asset_path("Cross.png") %>";
     }
     else {  
       switch (iconCode)
       {
         case "11":
-          return "/assets/mm_20_white.png";
+          return "<%= asset_path("mm_20_white.png") %>";
           break;
         case "12":
-          return "/assets/mm_20_green.png";
+          return "<%= asset_path("mm_20_green.png") %>";
           break;
         case "21":
-          return "/assets/WhiteTriangle.png";
+          return "<%= asset_path("WhiteTriangle.png") %>";
           break;
         case "22":
-          return "/assets/GreenTriangles.png";
+          return "<%= asset_path("GreenTriangles.png") %>";
           break;
         case "23":
-          return "/assets/YellowTriangle.png";
+          return "<%= asset_path("YellowTriangle.png") %>";
           break;
         case "24":
-          return "/assets/OrangeTriangle.png";
+          return "<%= asset_path("OrangeTriangle.png") %>";
           break;
       }
     }
@@ -255,13 +255,13 @@ function CountMarkers(){
 
 CountMarkers();
 
-$('#FishOnlyNotComplete').text(_.countBy(iconList)['/assets/mm_20_white.png']);
-$('#FishOnlyComplete').text(_.countBy(iconList)['/assets/mm_20_green.png']);
-$('#AllThreeNotComplete').text(_.countBy(iconList)['/assets/WhiteTriangle.png']);
-$('#AllThreeComplete').text(_.countBy(iconList)['/assets/GreenTriangles.png']);
-$('#AllThreeFishComplete').text(_.countBy(iconList)['/assets/YellowTriangle.png']);
-$('#AllThreeDemoComplete').text(_.countBy(iconList)['/assets/OrangeTriangle.png']);
-$('#NoHabitat').text(_.countBy(iconList)['/assets/Cross.png']);
+$('#FishOnlyNotComplete').text(_.countBy(iconList)["<%= asset_path('mm_20_white.png') %>"]);
+$('#FishOnlyComplete').text(_.countBy(iconList)["<%= asset_path('mm_20_green.png') %>"]);
+$('#AllThreeNotComplete').text(_.countBy(iconList)["<%= asset_path('WhiteTriangle.png') %>"]);
+$('#AllThreeComplete').text(_.countBy(iconList)["<%= asset_path('GreenTriangles.png') %>"]);
+$('#AllThreeFishComplete').text(_.countBy(iconList)["<%= asset_path('YellowTriangle.png') %>"]);
+$('#AllThreeDemoComplete').text(_.countBy(iconList)["<%= asset_path('OrangeTriangle.png') %>"]);
+$('#NoHabitat').text(_.countBy(iconList)["<%= asset_path('Cross.png') %>"]);
 
 });
 
