@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :latitude, :longitude, :site, :level, :need, :color, :is_reserved, :region_id, :fish_complete_date, :fish_complete_agnecy, :demo_complete_agency, :demo_complete_date, :depth
+  attr_accessible :latitude, :longitude, :site, :level, :need, :color, :is_reserved, :region_id, :fish_complete_date, :fish_complete_agency, :demo_complete_agency, :demo_complete_date, :depth
 
   scope :region,          lambda { |reg| where("region_id = ?", reg).load }
   scope :alternate,       lambda { where(level: 2).load }
