@@ -25,7 +25,7 @@
       <td><%= best_in_place location, :fish_complete_agency, :as => :input, :place_holder => "---------" %></td>
       <td><%= best_in_place location, :demo_complete_date, :as => :date, :place_holder => "---------", :html_attrs => {:class => "datepicker"} %></td>
       <td><%= best_in_place location, :demo_complete_agency, :as => :input, :place_holder => "---------" %></td>
-      <td><%= best_in_place location, :color, :as => :select, :collection => [[1,"not started"], [2,"all complete"], [3,"fish complete"], [4,"demo complete"]] %></td>
+      <td><%= best_in_place location, :color, :as => :select, :collection => location.DropDownMenu %></td>
       <td><%= best_in_place location, :is_reserved, as: :checkbox, collection: ["No", "Yes"], class:"isreserved" %></td>
     </tr>
     <% end %>

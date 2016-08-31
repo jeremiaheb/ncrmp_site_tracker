@@ -26,6 +26,14 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def DropDownMenu
+    if self.need == 2
+      [[1,"not started"], [2,"all complete"], [3,"fish complete"], [4,"demo complete"]]
+    else 
+      [[1,"not started"], [2,"all complete"]]
+    end
+  end
+
   def self.search(search)
     if !search.blank?
       find(:all, :conditions => ( search ? {:site => search.split( /, */ )} : []))
