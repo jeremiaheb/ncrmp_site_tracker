@@ -104,7 +104,7 @@ $(document).ready(function(){
           return "<%= asset_path("YellowTriangle.png") %>";
           break;
         case "24":
-          return "<%= asset_path("OrangeTriangle.png") %>";
+          return "<%= asset_path("IndigoTriangle.png") %>";
           break;
       }
     }
@@ -260,7 +260,7 @@ $('#FishOnlyComplete').text(_.countBy(iconList)["<%= asset_path('mm_20_green.png
 $('#AllThreeNotComplete').text(_.countBy(iconList)["<%= asset_path('WhiteTriangle.png') %>"]);
 $('#AllThreeComplete').text(_.countBy(iconList)["<%= asset_path('GreenTriangles.png') %>"]);
 $('#AllThreeFishComplete').text(_.countBy(iconList)["<%= asset_path('YellowTriangle.png') %>"]);
-$('#AllThreeDemoComplete').text(_.countBy(iconList)["<%= asset_path('OrangeTriangle.png') %>"]);
+$('#AllThreeDemoComplete').text(_.countBy(iconList)["<%= asset_path('IndigoTriangle.png') %>"]);
 $('#NoHabitat').text(_.countBy(iconList)["<%= asset_path('Cross.png') %>"]);
 
 });
