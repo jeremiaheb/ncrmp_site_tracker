@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'json'
 gem 'multi_json'
 gem 'activemodel'
+gem 'activesupport', '5.0.1'
 
 gem 'thin'
 gem 'protected_attributes_continued'
@@ -25,7 +26,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+#gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 #Add bootstrap for html views
@@ -56,9 +57,12 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'capistrano' 
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano', '~> 3.7', '>= 3.7.1'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-passenger', '~> 0.2.0'
+
+  # Add this if you're using rbenv
+  gem 'capistrano-rbenv', '~> 2.1'
 
 end
 

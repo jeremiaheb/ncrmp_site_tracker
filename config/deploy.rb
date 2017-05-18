@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.4.0'
+lock '3.8.1'
 
 set :application, 'ncrmp_site_tracker'
 set :repo_url, 'git@github.com:jeremiaheb/ncrmp_site_tracker.git'
@@ -11,7 +11,7 @@ set :repo_url, 'git@github.com:jeremiaheb/ncrmp_site_tracker.git'
 set :deploy_to, '/var/www/apps/ncrmp_site_tracker'
 
 # Default value for :scm is :git
-set :scm, :git
+#set :scm, :git
 
 # Default value for :format is :pretty
 # set :format, :pretty
