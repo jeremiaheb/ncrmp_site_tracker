@@ -35,7 +35,7 @@
   #end
 #end
 
-open("db/SeedData/PR_2016_TPR_Additions.csv") do |samples|
+open("db/SeedData/PR2017_additions.csv") do |samples|
   samples.read.each_line do |sample|
     id, lat, lon, reg, level, need, color, reserve, depth = sample.chomp.split(",")
     Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve, :depth => depth)
